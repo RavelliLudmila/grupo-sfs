@@ -1,5 +1,5 @@
-import { SquareArrowOutUpRight } from "lucide-react";
-import Image from "next/image";
+import { SquareArrowOutUpRight } from 'lucide-react';
+import Image from 'next/image';
 
 export default function About() {
     return (
@@ -18,7 +18,8 @@ export default function About() {
                         <div className="text-start">
                             <h3 className="text-xl font-semibold text-secondary">IA clínica integrada</h3>
                             <p className="text-foreground">
-                                Inteligencia artificial aplicada a procesos reales del sistema de salud, con modelos específicos del ámbito médico y supervisión profesional.
+                                Inteligencia artificial aplicada a procesos reales del sistema de salud, con modelos específicos del ámbito médico y
+                                supervisión profesional.
                             </p>
                         </div>
                     </div>
@@ -28,10 +29,12 @@ export default function About() {
                             <p className="text-foreground">
                                 Nuestros procesos de desarrollo se encuentran certificados por la norma de gestion de calidad ISO 9001.
                             </p>
-                            <div className="border-b border-gray-300 my-4"/>
-                            <Image src="/images/iso9001-certification.png" alt="Certificación ISO 9001" />
-                            <Image src="/images/iso9001-qr.png" alt="Código QR Certificación ISO 9001" />
-                            <a href="/certificado-de-calidad" className="text-secondary">Política de Calidad <SquareArrowOutUpRight className="inline-block ml-2" /></a>
+                            <div className="border-b border-gray-300 my-4" />
+                            <Image src="/images/iso9001-certification.webp" alt="Certificación ISO 9001" />
+                            <Image src="/images/iso9001-qr.webp" alt="Código QR Certificación ISO 9001" />
+                            <a href="/certificado-de-calidad" className="text-secondary">
+                                Política de Calidad <SquareArrowOutUpRight className="inline-block ml-2" />
+                            </a>
                         </div>
                         <div className="text-start">
                             <h3 className="text-xl font-semibold text-secondary">Integración con HL7</h3>

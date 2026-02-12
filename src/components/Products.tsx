@@ -7,26 +7,26 @@ import { ArrowRight } from 'lucide-react';
 export default function Products() {
     const products = [
         {
-            image: '/images/mockup-healthcare-ai.png',
+            image: '/images/mockup-healthcare-ai.webp',
             name: 'HealthCareAI',
             description: 'Modulo completo al servicio de instituciones, profesionales y pacientes. Facilita procesos y mejora los productos de SFS.',
             link: 'https://www.sfs.com.ar/healthcare-ai',
         },
         {
-            image: '/images/mockup-healthcare.png',
+            image: '/images/mockup-healthcare.webp',
             name: 'HealthCare',
             description:
                 'Solución integral para la gestión de datos clínicos y administrativos. Facilita la interoperabilidad entre diferentes sistemas.',
             link: 'https://www.sfs.com.ar/healthcare',
         },
         {
-            image: '/images/mockup-healthtrack.png',
+            image: '/images/mockup-healthtrack.webp',
             name: 'HealthTrack',
             description: 'Permite el seguimiento y monitoreo de la salud de los pacientes en tiempo real.',
             link: 'https://www.sfs.com.ar/healthtrack',
         },
         {
-            image: '/images/mockup-sapma.png',
+            image: '/images/mockup-sapma.webp',
             name: 'SAPma',
             description: 'Aplicaciones y modulos web para la administración de aseguradoras y financiadoras de salud.',
             link: 'https://www.sfs.com.ar/sapma',
