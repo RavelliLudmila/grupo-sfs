@@ -30,8 +30,8 @@ export default function About() {
                                 Nuestros procesos de desarrollo se encuentran certificados por la norma de gestion de calidad ISO 9001.
                             </p>
                             <div className="border-b border-gray-300 my-4" />
-                            <Image src="/images/iso-certified.webp" alt="Certificación ISO 9001" />
-                            <Image src="/images/QR-iso-certified.webp" alt="Código QR Certificación ISO 9001" />
+                            <Image src="/images/iso-certified.webp" alt="Certificación ISO 9001" width={150} height={150} />
+                            <Image src="/images/QR-iso-certified.webp" alt="Código QR Certificación ISO 9001" width={150} height={150} />
                             <a href="/certificado-de-calidad" className="text-secondary">
                                 Política de Calidad <SquareArrowOutUpRight className="inline-block ml-2" />
                             </a>

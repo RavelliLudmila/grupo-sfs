@@ -1,3 +1,5 @@
+'use client';
+
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from './ui/button';
@@ -35,12 +37,12 @@ export default function Footer() {
                         <h3 className="font-bold mb-2">Contacto</h3>
                         <div className="flex flex-col space-y-1">
                             {link.map((item, index) => (
-                                <>
+                                <div key={index} className="flex items-center">
                                     {item.icon}
-                                    <a key={index} href={item.href} target="_blank" className="text-sm underline hover:no-underline">
+                                    <a href={item.href} target="_blank" className="text-sm underline hover:no-underline">
                                         {item.text}
                                     </a>
-                                </>
+                                </div>
                             ))}
                         </div>
                     </div>

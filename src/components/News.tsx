@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { Card, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel';
@@ -7,17 +9,17 @@ export default function News() {
         {
             title: 'Novedad 1',
             description: 'Descripción de la novedad 1',
-            video: 'https://via.placeholder.com/300x200',
+            video: '/images/hero-bg.webp',
         },
         {
             title: 'Novedad 2',
             description: 'Descripción de la novedad 2',
-            video: 'https://via.placeholder.com/300x200',
+            video: '/images/hero-bg.webp',
         },
         {
             title: 'Novedad 3',
             description: 'Descripción de la novedad 3',
-            video: 'https://via.placeholder.com/300x200',
+            video: '/images/hero-bg.webp',
         },
     ];
     return (
@@ -33,6 +35,8 @@ export default function News() {
                                     <Image
                                         src={item.video}
                                         alt={item.title}
+                                        width={300}
+                                        height={200}
                                         className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
                                     />
                                     <CardHeader>

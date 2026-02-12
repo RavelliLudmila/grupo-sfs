@@ -1,10 +1,12 @@
+'use client';
+
 import Image from 'next/image';
 import { Button } from './ui/button';
 
 export default function Navbar() {
     return (
         <nav>
-            <Image src="grupoSFS.svg" alt="Grupo SFS Logo" />
+            <Image src="grupoSFS.svg" alt="Grupo SFS Logo" width={150} height={50} />
             <div>
                 <a href="https://www.sfs.com.ar/healthcare-ai" target="_blank" rel="noopener noreferrer">
                     Healthcare AI

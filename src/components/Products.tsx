@@ -12,26 +12,26 @@ export default function Products() {
     
     const productsInstitutions = [
         {
-            image: '/images/mockup-healthcare-ai.webp',
+            image: '/images/hero-bg.webp',
             name: 'HealthCareAI',
             description: 'Modulo completo al servicio de instituciones, profesionales y pacientes. Facilita procesos y mejora los productos de SFS.',
             link: 'https://www.sfs.com.ar/healthcare-ai',
         },
         {
-            image: '/images/mockup-healthcare.webp',
+            image: '/images/hero-bg.webp',
             name: 'HealthCare',
             description:
                 'Solución integral para la gestión de datos clínicos y administrativos. Facilita la interoperabilidad entre diferentes sistemas.',
             link: 'https://www.sfs.com.ar/healthcare',
         },
         {
-            image: '/images/mockup-healthtrack.webp',
+            image: '/images/hero-bg.webp',
             name: 'HealthTrack',
             description: 'Permite el seguimiento y monitoreo de la salud de los pacientes en tiempo real.',
             link: 'https://www.sfs.com.ar/healthtrack',
         },
         {
-            image: '/images/mockup-sapma.webp',
+            image: '/images/hero-bg.webp',
             name: 'SAPma',
             description: 'Aplicaciones y modulos web para la administración de aseguradoras y financiadoras de salud.',
             link: 'https://www.sfs.com.ar/sapma',
@@ -39,17 +39,17 @@ export default function Products() {
     ];
     const productsPatients = [
         {
-            image: '/images/mockup-app.webp',
+            image: '/images/hero-bg.webp',
             name: 'App para el paciente',
             description: 'Aplicación móvil para facilitar el acceso de los pacientes a su información clínica.',
         },
         {
-            image: '/images/mockup-teleconsulta.webp',
+            image: '/images/hero-bg.webp',
             name: 'Teleconsulta',
             description: 'Consultas Paciente-Profesional desde la comodidad de su hogar.',
         },
         {
-            image: '/images/mockup-triage.webp',
+            image: '/images/hero-bg.webp',
             name: 'Triage',
             description: 'Protocolo de selección y clasificación de pacientes.',
         },
@@ -75,6 +75,8 @@ export default function Products() {
                                   <Image
                                       src={product.image}
                                       alt={product.name}
+                                      width={400}
+                                      height={300}
                                       className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
                                   />
                                   <CardHeader>
@@ -93,6 +95,8 @@ export default function Products() {
                                   <Image
                                       src={product.image}
                                       alt={product.name}
+                                      width={400}
+                                      height={300}
                                       className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
                                   />
                                   <CardHeader>

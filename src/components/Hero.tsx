@@ -1,9 +1,11 @@
+'use client';
+
 import { Button } from './ui/button';
 
 export default function Hero() {
     return (
         <>
-            <section style={{ backgroundImage: "url('hero-bg.webp')" }}>
+            <section style={{ backgroundImage: "url('/images/hero-bg.webp')" }}>
                 <div className="container bg-linear-to-r from-primary to-black/50 mx-auto px-6 py-20 text-start">
                     <h1 className="text-4xl font-bold text-background md:text-5xl lg:text-6xl">Software médico de vanguardia</h1>
                     <p className="mt-5 text-lg text-background md:text-xl lg:text-2xl">
