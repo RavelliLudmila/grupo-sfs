@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Arimo } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const arimoSans = Arimo({
   variable: "--font-arimo-sans",
@@ -111,7 +113,9 @@ export default function RootLayout({
       <body
         className={`${arimoSans.variable} antialiased`}
       >
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
