@@ -59,11 +59,11 @@ export default function Products() {
         <>
             <section className="container mx-auto px-6 py-20 text-center">
                 <h2 className="text-3xl font-bold text-secondary md:text-4xl lg:text-5xl">PRODUCTOS Y SOLUCIONES DE SOFTWARE</h2>
-                <ButtonGroup>
-                    <Button variant="outline" size="lg" className="mt-5" onClick={() => setShowInstitutions(true)}>
+                <ButtonGroup className="justify-center mt-8 bg-button-inactive">
+                    <Button {...(showInstitutions ? { variant: "secondary" } : { variant: "ghost" })} size="lg" className="mt-5" onClick={() => setShowInstitutions(true)}>
                         Para instituciones
                     </Button>
-                    <Button variant="outline" size="lg" className="mt-5" onClick={() => setShowInstitutions(false)}>
+                    <Button {...(!showInstitutions ? { variant: "secondary" } : { variant: "ghost" })} size="lg" className="mt-5" onClick={() => setShowInstitutions(false)}>
                         Para sus pacientes
                     </Button>
                 </ButtonGroup>
