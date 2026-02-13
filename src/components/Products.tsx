@@ -1,14 +1,25 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { ButtonGroup } from './ui/button-group';
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { ArrowRight } from 'lucide-react';
+import { GMAIL_LINK, MAILTO_LINK } from '@/lib/constants';
 
 export default function Products() {
     const [showInstitutions, setShowInstitutions] = useState(true);
+    const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsLargeScreen(window.innerWidth >= 1024);
+        };
+        checkScreenSize();
+        window.addEventListener('resize', checkScreenSize);
+        return () => window.removeEventListener('resize', checkScreenSize);
+    }, []);
 
     const productsInstitutions = [
         {
@@ -117,7 +128,7 @@ export default function Products() {
                           ))}
                 </div>
                 <h3 className="text-2xl text-secondary mt-12">¿Querés tener una experiencia personalizada?</h3>
-                <Button variant="default" size="lg" className="mt-5" onClick={() => window.open('https://mail.google.com/mail/?view=cm&fs=1&to=info@sfs.com.ar&su=Solicito+una+presentación&body=Hola,%0A%0AQuisiera+solicitar+una+presentación.%0A%0A%5BPor+favor+completar+los+siguientes+datos%5D%0A%0A-+Nombre+y+Apellido:%0A-+Correo+electrónico:%0A-+Número+de+teléfono:%0A-+Ciudad:%0A-+Institución:%0A%0AQuedo+a+la+espera.+Muchas+gracias.')}>
+                <Button variant="default" size="lg" className="mt-5" onClick={() => window.open(isLargeScreen ? GMAIL_LINK : MAILTO_LINK, '_blank')}>
                     Solicitar presentación
                 </Button>
             </section>
