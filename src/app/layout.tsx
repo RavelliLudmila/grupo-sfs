@@ -3,6 +3,7 @@ import { Arimo } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Chatbot from "@/components/Chatbot";
 
 const arimoSans = Arimo({
   variable: "--font-arimo-sans",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.sfs.com.ar"),
 
   title: {
-    default: "Grupo SFS | Software Médico para el sector salud",
+    default: "Grupo SFS",
     template: "%s | Grupo SFS",
   },
 
@@ -116,6 +117,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <Chatbot />
       </body>
     </html>
   );
