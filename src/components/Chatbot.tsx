@@ -1,23 +1,34 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { chatData, ChatResponse, ChatOption } from '@/content/chatData';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/card';
-import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
 
 interface Message {
     type: 'bot' | 'user';
     content: string;
     response?: ChatResponse;
+    answered?: boolean;
 }
 
 export default function Chatbot() {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState<Message[]>([{ type: 'bot', content: chatData.text, response: chatData }]);
+    const messagesEndRef = useRef<HTMLDivElement>(null);
 
-    const handleOptionClick = (option: ChatOption) => {
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
+
+    const handleOptionClick = (option: ChatOption, messageIndex: number) => {
+        setMessages((prev) => prev.map((msg, idx) => (idx === messageIndex ? { ...msg, answered: true } : msg)));
+
         setMessages((prev) => [...prev, { type: 'user', content: option.text }]);
 
         if (option.action?.type === 'link' && option.action.url) {
@@ -47,13 +58,10 @@ export default function Chatbot() {
             </Button>
 
             {isOpen && (
-                <div className="fixed bottom-24 right-6 z-50 w-95 h-150 bg-card rounded-2xl shadow-2xl flex flex-col overflow-hidden border">
-                    <div className="bg-primary p-4 flex items-center justify-between">
+                <div className="fixed bottom-24 right-6 z-50 w-95 h-110 bg-card rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+                    <div className="bg-primary p-3 flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                            <Avatar className="w-10 h-10">
-                                <AvatarImage src="/images/chatbot-vector.webp" alt="Bot" />
-                                <AvatarFallback className="bg-card">SFS</AvatarFallback>
-                            </Avatar>
+                            <Image src="/images/chatbot-icon.webp" alt="Chatbot Icon" width={25} height={25} />
                             <div>
                                 <h3 className="text-primary-foreground font-semibold text-lg">SFS Bot</h3>
                             </div>
@@ -81,7 +89,7 @@ export default function Chatbot() {
                                             {message.response?.products && (
                                                 <div className="mt-3 space-y-3">
                                                     {message.response.products.map((product, pIdx) => (
-                                                        <Card key={pIdx} className="p-0 gap-2">
+                                                        <Card key={pIdx} className="gap-2">
                                                             <CardHeader className="pb-2">
                                                                 <CardTitle className="text-sm text-primary">{product.title}</CardTitle>
                                                                 <CardDescription className="text-xs">{product.description}</CardDescription>
@@ -107,14 +115,14 @@ export default function Chatbot() {
                                                 </div>
                                             )}
 
-                                            {message.response?.options && message.response.options.length > 0 && (
+                                            {message.response?.options && message.response.options.length > 0 && !message.answered && (
                                                 <div className="mt-3 space-y-2">
                                                     {message.response.options.map((option) => (
                                                         <Button
                                                             key={option.id}
-                                                            onClick={() => handleOptionClick(option)}
+                                                            onClick={() => handleOptionClick(option, idx)}
                                                             variant="outline"
-                                                            className="w-full justify-start text-left border-2 border-primary text-primary hover:bg-primary/10 rounded-xl"
+                                                            className="w-full justify-start text-left border-2 border-primary text-primary hover:bg-primary/10 hover:text-accent rounded-xl"
                                                         >
                                                             {option.text}
                                                         </Button>
@@ -132,6 +140,7 @@ export default function Chatbot() {
                                 )}
                             </div>
                         ))}
+                        <div ref={messagesEndRef} />
                     </div>
                 </div>
             )}

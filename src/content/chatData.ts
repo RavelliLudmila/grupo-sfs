@@ -93,7 +93,7 @@ export const chatData: ChatResponse = {
                     {
                         id: 'ver-soluciones',
                         text: 'Ver soluciones',
-                        action: { type: 'link', url: '/#productos' },
+                        action: { type: 'link', url: '/#products' },
                     },
                     {
                         id: 'solicitar-info',

@@ -57,7 +57,7 @@ export default function Products() {
 
     return (
         <>
-            <section className="container flex flex-col justify-between items-center mx-auto px-6 py-20 text-center">
+            <section id="products" className="container flex flex-col justify-between items-center mx-auto px-6 py-20 text-center">
                 <h2 className="text-3xl font-bold text-secondary">PRODUCTOS Y SOLUCIONES DE SOFTWARE</h2>
                 <ButtonGroup className="justify-center mt-8 bg-button-inactive rounded-md">
                     <Button
