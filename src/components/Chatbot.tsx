@@ -98,12 +98,12 @@ export default function Chatbot() {
                                                                 <div className="flex gap-2">
                                                                     {product.actions.primary && (
                                                                         <Button asChild size="xs" variant="default">
-                                                                            <a href={product.actions.primary.url}>{product.actions.primary.text}</a>
+                                                                            <a href={product.actions.primary.url} target="_blank" rel="noopener noreferrer">{product.actions.primary.text}</a>
                                                                         </Button>
                                                                     )}
                                                                     {product.actions.secondary && (
                                                                         <Button asChild size="xs" variant="outline">
-                                                                            <a href={product.actions.secondary.url}>
+                                                                            <a href={product.actions.secondary.url} target="_blank" rel="noopener noreferrer">
                                                                                 {product.actions.secondary.text}
                                                                             </a>
                                                                         </Button>

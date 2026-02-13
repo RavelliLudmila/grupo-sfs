@@ -65,7 +65,7 @@ export default function Navbar() {
                 </Button>
             </div>
             <div className="flex items-center gap-3">
-                <Button variant="default" onClick={() => window.open('/presentacion', '_blank')}>
+                <Button variant="default" onClick={() => window.open('https://mail.google.com/mail/?view=cm&fs=1&to=info@sfs.com.ar&su=Solicito+una+presentación&body=Hola,%0A%0AQuisiera+solicitar+una+presentación.%0A%0A%5BPor+favor+completar+los+siguientes+datos%5D%0A%0A-+Nombre+y+Apellido:%0A-+Correo+electrónico:%0A-+Número+de+teléfono:%0A-+Ciudad:%0A-+Institución:%0A%0AQuedo+a+la+espera.+Muchas+gracias.', '_blank')}>
                     Solicitar presentación
                 </Button>
                 <Button variant="secondary" onClick={() => window.open('https://online.sfssa.com.ar', '_blank')}>

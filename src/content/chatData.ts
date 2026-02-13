@@ -38,7 +38,7 @@ export const chatData: ChatResponse = {
                             'SFS HealthCare es una solución integral para la gestión de datos clínicos y administrativos, interoperable y adaptable a cada institución. Incluye historia clínica electrónica, turnos, facturación, interoperabilidad y más, todo en una plataforma 100% web.',
                         actions: {
                             primary: { text: 'Ver más', url: '/healthcare' },
-                            secondary: { text: 'Solicitar presentación', url: '#contacto' },
+                            secondary: { text: 'Solicitar presentación', url: 'https://mail.google.com/mail/?view=cm&fs=1&to=info@sfs.com.ar&su=Solicito+una+presentación&body=Hola,%0A%0AQuisiera+solicitar+una+presentación.%0A%0A%5BPor+favor+completar+los+siguientes+datos%5D%0A%0A-+Nombre+y+Apellido:%0A-+Correo+electrónico:%0A-+Número+de+teléfono:%0A-+Ciudad:%0A-+Institución:%0A%0AQuedo+a+la+espera.+Muchas+gracias.' },
                         },
                     },
                     {
@@ -47,7 +47,7 @@ export const chatData: ChatResponse = {
                             'SFS HealthTrack permite el seguimiento y monitoreo de la salud de los pacientes en tiempo real, utilizando inteligencia artificial para análisis predictivos y mejor toma de decisiones clínicas.',
                         actions: {
                             primary: { text: 'Ver más', url: '/healthtrack' },
-                            secondary: { text: 'Solicitar presentación', url: '#contacto' },
+                            secondary: { text: 'Solicitar presentación', url: 'https://mail.google.com/mail/?view=cm&fs=1&to=info@sfs.com.ar&su=Solicito+una+presentación&body=Hola,%0A%0AQuisiera+solicitar+una+presentación.%0A%0A%5BPor+favor+completar+los+siguientes+datos%5D%0A%0A-+Nombre+y+Apellido:%0A-+Correo+electrónico:%0A-+Número+de+teléfono:%0A-+Ciudad:%0A-+Institución:%0A%0AQuedo+a+la+espera.+Muchas+gracias.' },
                         },
                     },
                     {
@@ -56,7 +56,7 @@ export const chatData: ChatResponse = {
                             'Nuestra IA está integrada a los procesos reales del sistema de salud. Utiliza modelos específicos del ámbito médico y funciona como herramienta de asistencia, siempre con supervisión profesional.',
                         actions: {
                             primary: { text: 'Ver más', url: '/healthcare-ai' },
-                            secondary: { text: 'Solicitar presentación', url: '#contacto' },
+                            secondary: { text: 'Solicitar presentación', url: 'https://mail.google.com/mail/?view=cm&fs=1&to=info@sfs.com.ar&su=Solicito+una+presentación&body=Hola,%0A%0AQuisiera+solicitar+una+presentación.%0A%0A%5BPor+favor+completar+los+siguientes+datos%5D%0A%0A-+Nombre+y+Apellido:%0A-+Correo+electrónico:%0A-+Número+de+teléfono:%0A-+Ciudad:%0A-+Institución:%0A%0AQuedo+a+la+espera.+Muchas+gracias.' },
                         },
                     },
                     {
@@ -64,7 +64,7 @@ export const chatData: ChatResponse = {
                         description:
                             'Acompañamos a cada institución desde el diagnóstico inicial hasta la puesta en marcha y evolución del sistema. Nuestro equipo brinda soporte continuo y personalizado.',
                         actions: {
-                            secondary: { text: 'Solicitar presentación', url: '#contacto' },
+                            secondary: { text: 'Solicitar presentación', url: 'https://mail.google.com/mail/?view=cm&fs=1&to=info@sfs.com.ar&su=Solicito+una+presentación&body=Hola,%0A%0AQuisiera+solicitar+una+presentación.%0A%0A%5BPor+favor+completar+los+siguientes+datos%5D%0A%0A-+Nombre+y+Apellido:%0A-+Correo+electrónico:%0A-+Número+de+teléfono:%0A-+Ciudad:%0A-+Institución:%0A%0AQuedo+a+la+espera.+Muchas+gracias.' },
                         },
                     },
                 ],
@@ -79,7 +79,7 @@ export const chatData: ChatResponse = {
                     {
                         id: 'solicitar-sapma',
                         text: 'Solicitar presentación',
-                        action: { type: 'link', url: '#contacto' },
+                        action: { type: 'link', url: 'https://mail.google.com/mail/?view=cm&fs=1&to=info@sfs.com.ar&su=Solicito+una+presentación&body=Hola,%0A%0AQuisiera+solicitar+una+presentación.%0A%0A%5BPor+favor+completar+los+siguientes+datos%5D%0A%0A-+Nombre+y+Apellido:%0A-+Correo+electrónico:%0A-+Número+de+teléfono:%0A-+Ciudad:%0A-+Institución:%0A%0AQuedo+a+la+espera.+Muchas+gracias.' },
                     },
                 ],
             },
@@ -98,7 +98,7 @@ export const chatData: ChatResponse = {
                     {
                         id: 'solicitar-info',
                         text: 'Solicitar presentación',
-                        action: { type: 'link', url: '#contacto' },
+                        action: { type: 'link', url: 'https://mail.google.com/mail/?view=cm&fs=1&to=info@sfs.com.ar&su=Solicito+una+presentación&body=Hola,%0A%0AQuisiera+solicitar+una+presentación.%0A%0A%5BPor+favor+completar+los+siguientes+datos%5D%0A%0A-+Nombre+y+Apellido:%0A-+Correo+electrónico:%0A-+Número+de+teléfono:%0A-+Ciudad:%0A-+Institución:%0A%0AQuedo+a+la+espera.+Muchas+gracias.' },
                     },
                 ],
             },
