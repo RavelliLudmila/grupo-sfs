@@ -2,61 +2,58 @@
 
 import Image from 'next/image';
 import { Button } from './ui/button';
+import Link from 'next/link';
 
 export default function Navbar() {
     return (
-        <nav className="flex items-center justify-between px-8 py-4 bg-white shadow-sm">
-            <div className="flex items-center">
-                <Image src="/grupoSFS.svg" alt="Grupo SFS Logo" width={150} height={50} />
-            </div>
+        <nav className="flex items-center justify-between px-36 py-6 bg-white shadow-sm">
+            <Link href='/' className="flex items-center">
+                <Image src="/grupo-sfs.png" alt="Grupo SFS Logo" width={150} height={50} />
+            </Link>
             <div className="flex items-center gap-8">
-                <a
-                    href="https://www.sfs.com.ar/healthcare-ai"
-                    target="_blank"
+                <Button
+                    variant="link"
                     rel="noopener noreferrer"
-                    className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                    onClick={() => window.open('/healthcare-ai', '_blank')}
+                    className='text-base hover:no-underline hover:text-foreground'
                 >
                     HealthCare AI
-                </a>
-                <a
-                    href="https://www.sfs.com.ar/healthcare"
-                    target="_blank"
+                </Button>
+                <Button
+                    variant="link"
                     rel="noopener noreferrer"
-                    className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                    onClick={() => window.open('/healthcare', '_blank')}
+                    className='text-base hover:no-underline hover:text-foreground'
                 >
                     HealthCare
-                </a>
-                <a
-                    href="https://www.sfs.com.ar/healthtrack"
-                    target="_blank"
+                </Button>
+                <Button
+                    variant="link"
                     rel="noopener noreferrer"
-                    className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                    onClick={() => window.open('/healthtrack', '_blank')}
+                    className='text-base hover:no-underline hover:text-foreground'
                 >
                     HealthTrack
-                </a>
-                <a
-                    href="https://www.sfs.com.ar/sapma"
-                    target="_blank"
+                </Button>
+                <Button
+                    variant="link"
                     rel="noopener noreferrer"
-                    className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                    onClick={() => window.open('/sapma', '_blank')}
+                    className='text-base hover:no-underline hover:text-foreground'
                 >
                     SAPma
-                </a>
+                </Button>
             </div>
             <div className="flex items-center gap-3">
                 <Button
                     variant="default"
-                    size="sm"
-                    onClick={() => window.open('https://www.sfs.com.ar/contacto', '_blank')}
-                    className="bg-blue-400 hover:bg-blue-500"
+                    onClick={() => window.open('/presentacion', '_blank')}
                 >
                     Presentación
                 </Button>
                 <Button
                     variant="secondary"
-                    size="sm"
-                    onClick={() => window.open('https://www.sfs.com.ar/contacto', '_blank')}
-                    className="bg-indigo-900 hover:bg-indigo-800 text-white"
+                    onClick={() => window.open('https://online.sfssa.com.ar', '_blank')}
                 >
                     Acceder
                 </Button>
