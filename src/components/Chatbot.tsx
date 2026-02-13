@@ -64,19 +64,25 @@ export default function Chatbot() {
                 onClick={() => setIsOpen(!isOpen)}
                 variant="outline"
                 size="icon-lg"
-                className="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
+                className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
                 aria-label="Abrir chat"
             >
-                <Image src="/images/chatbot.webp" alt="Chat" width={40} height={40} className="group-hover:scale-110 transition-transform" />
+                <Image
+                    src="/images/chatbot.webp"
+                    alt="Chat"
+                    width={40}
+                    height={40}
+                    className="w-8 h-8 sm:w-10 sm:h-10 group-hover:scale-110 transition-transform"
+                />
             </Button>
 
             {isOpen && (
-                <div className="fixed bottom-24 right-6 z-50 w-95 h-110 bg-card rounded-2xl shadow-2xl flex flex-col overflow-hidden">
-                    <div className="bg-primary p-3 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                            <Image src="/images/chatbot-icon.webp" alt="Chatbot Icon" width={25} height={25} />
+                <div className="fixed bottom-20 right-4 sm:bottom-24 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-95 h-[70vh] sm:h-110 max-w-md bg-card rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+                    <div className="bg-primary p-2.5 sm:p-3 flex items-center justify-between">
+                        <div className="flex items-center gap-2 sm:gap-3">
+                            <Image src="/images/chatbot-icon.webp" alt="Chatbot Icon" width={25} height={25} className="w-5 h-5 sm:w-6 sm:h-6" />
                             <div>
-                                <h3 className="text-primary-foreground font-semibold text-lg">SFS Bot</h3>
+                                <h3 className="text-primary-foreground font-semibold text-base sm:text-lg">SFS Bot</h3>
                             </div>
                         </div>
                         <Button
@@ -89,34 +95,46 @@ export default function Chatbot() {
                         </Button>
                     </div>
 
-                    <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-muted/30">
+                    <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 bg-muted/30">
                         {messages.map((message, idx) => (
                             <div key={idx}>
                                 {message.type === 'bot' ? (
                                     <div className="flex gap-2 items-start">
                                         <div className="flex-1">
-                                            <div className="bg-muted rounded-2xl rounded-tl-none p-4 text-sm text-foreground whitespace-pre-line">
+                                            <div className="bg-muted rounded-2xl rounded-tl-none p-3 sm:p-4 text-xs sm:text-sm text-foreground whitespace-pre-line">
                                                 {message.content}
                                             </div>
 
                                             {message.response?.products && (
-                                                <div className="mt-3 space-y-3">
+                                                <div className="mt-2 sm:mt-3 space-y-2 sm:space-y-3">
                                                     {message.response.products.map((product, pIdx) => (
                                                         <Card key={pIdx} className="gap-2">
-                                                            <CardHeader className="pb-2">
-                                                                <CardTitle className="text-sm text-primary">{product.title}</CardTitle>
-                                                                <CardDescription className="text-xs">{product.description}</CardDescription>
+                                                            <CardHeader className="pb-1.5 sm:pb-2 p-3 sm:p-4">
+                                                                <CardTitle className="text-xs sm:text-sm text-primary">{product.title}</CardTitle>
+                                                                <CardDescription className="text-[10px] sm:text-xs">
+                                                                    {product.description}
+                                                                </CardDescription>
                                                             </CardHeader>
-                                                            <CardContent className="pt-0">
-                                                                <div className="flex gap-2">
+                                                            <CardContent className="pt-0 p-3 sm:p-4">
+                                                                <div className="flex gap-1.5 sm:gap-2 flex-wrap">
                                                                     {product.actions.primary && (
-                                                                        <Button asChild size="xs" variant="default">
-                                                                            <a href={product.actions.primary.url} target="_blank" rel="noopener noreferrer">{product.actions.primary.text}</a>
+                                                                        <Button asChild size="xs" variant="default" className="text-xs h-7">
+                                                                            <a
+                                                                                href={product.actions.primary.url}
+                                                                                target="_blank"
+                                                                                rel="noopener noreferrer"
+                                                                            >
+                                                                                {product.actions.primary.text}
+                                                                            </a>
                                                                         </Button>
                                                                     )}
                                                                     {product.actions.secondary && (
-                                                                        <Button asChild size="xs" variant="outline">
-                                                                            <a href={product.actions.secondary.url} target="_blank" rel="noopener noreferrer">
+                                                                        <Button asChild size="xs" variant="outline" className="text-xs h-7">
+                                                                            <a
+                                                                                href={product.actions.secondary.url}
+                                                                                target="_blank"
+                                                                                rel="noopener noreferrer"
+                                                                            >
                                                                                 {product.actions.secondary.text}
                                                                             </a>
                                                                         </Button>
@@ -129,13 +147,13 @@ export default function Chatbot() {
                                             )}
 
                                             {message.response?.options && message.response.options.length > 0 && !message.answered && (
-                                                <div className="mt-3 space-y-2">
+                                                <div className="mt-2 sm:mt-3 space-y-1.5 sm:space-y-2">
                                                     {message.response.options.map((option) => (
                                                         <Button
                                                             key={option.id}
                                                             onClick={() => handleOptionClick(option, idx)}
                                                             variant="outline"
-                                                            className="w-full justify-start text-left border-2 border-primary text-primary hover:bg-primary/10 hover:text-accent rounded-xl"
+                                                            className="w-full justify-start text-left border-2 border-primary text-primary hover:bg-primary/10 hover:text-accent rounded-xl text-xs sm:text-sm py-2 sm:py-2.5 h-auto"
                                                         >
                                                             {option.text}
                                                         </Button>
@@ -146,7 +164,7 @@ export default function Chatbot() {
                                     </div>
                                 ) : (
                                     <div className="flex justify-end">
-                                        <div className="bg-primary text-primary-foreground rounded-2xl rounded-tr-none px-4 py-2.5 text-sm max-w-[80%]">
+                                        <div className="bg-primary text-primary-foreground rounded-2xl rounded-tr-none px-3 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm max-w-[80%]">
                                             {message.content}
                                         </div>
                                     </div>

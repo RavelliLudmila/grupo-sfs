@@ -29,7 +29,7 @@ export default function Navbar() {
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-8 lg:px-36 backdrop-blur-sm shadow-sm transition-all duration-300 ${isScrolled ? 'py-2 sm:py-3 bg-card/75' : 'py-4 sm:py-6 bg-card'}`}
+            className={`fixed w-screen top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-8 lg:px-36 backdrop-blur-sm shadow-sm transition-all duration-300 ${isScrolled ? 'py-2 sm:py-3 bg-card/75' : 'py-4 sm:py-6 bg-card'}`}
         >
             <Link href="/" className="flex items-center">
                 <Image
