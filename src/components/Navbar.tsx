@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default function Navbar() {
     return (
-        <nav className="flex items-center justify-between px-36 py-6 bg-white shadow-sm">
+        <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-36 py-6 bg-card/75 backdrop-blur-sm shadow-sm">
             <Link href='/' className="flex items-center">
                 <Image src="/grupo-sfs.png" alt="Grupo SFS Logo" width={150} height={50} />
             </Link>
