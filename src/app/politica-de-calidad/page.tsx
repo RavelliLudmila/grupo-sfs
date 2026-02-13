@@ -1,6 +1,6 @@
 export default function PoliticaDeCalidad() {
     return (
-        <section className="container mx-auto px-48 py-24 text-start">
+        <section className="container mx-auto px-48 pb-24 pt-48 text-start">
             <div className="flex flex-col justify-start items-start gap-5 mb-10">
                 <h2 className="text-3xl font-bold text-secondary md:text-4xl lg:text-5xl">Política de calidad</h2>
                 <div className="flex flex-col justify-start items-start gap-5">

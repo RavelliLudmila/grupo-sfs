@@ -1,10 +1,13 @@
+'use client'
+
 import { SquareArrowOutUpRight } from 'lucide-react';
 import Image from 'next/image';
+import { Button } from './ui/button';
 
 export default function About() {
     return (
-        <section className="container mx-auto px-6 py-20">
-            <h2 className="text-3xl font-bold text-secondary text-center mb-12 md:text-4xl lg:text-5xl">SOBRE NOSOTROS</h2>
+        <section className="container flex flex-col justify-between items-center mx-auto px-6 py-20 text-center">
+            <h2 className="text-3xl font-bold text-secondary pb-8">SOBRE NOSOTROS</h2>
             <div className="grid mt-10 gap-12 md:grid-cols-2">
                 <div className="flex flex-col gap-8">
                     <div className="text-start">
@@ -20,11 +23,11 @@ export default function About() {
                             Nuestros procesos de desarrollo se encuentran certificados por la norma de gestion de calidad ISO 9001.
                         </p>
                         <div className="flex items-center gap-4 mt-4">
-                            <Image src="/images/iso-certified.webp" alt="Certificación ISO 9001" width={80} height={80} />
-                            <Image src="/images/QR-iso-certified.webp" alt="Código QR Certificación ISO 9001" width={80} height={80} />
-                            <a href="/certificado-de-calidad" className="text-secondary hover:underline inline-flex items-center">
+                            <Image src="/images/iso-certified.webp" alt="Certificación ISO 9001" width={60} height={60} />
+                            <Image src="/images/QR-iso-certified.webp" alt="Código QR Certificación ISO 9001" width={60} height={60} />
+                            <Button variant="link" className="justify-start text-base font-normal p-0" onClick={() => window.open('/politica-de-calidad')}>
                                 Política de calidad <SquareArrowOutUpRight className="ml-2 h-4 w-4" />
-                            </a>
+                            </Button>
                         </div>
                     </div>
                 </div>
