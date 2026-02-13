@@ -23,22 +23,15 @@ export default function News() {
         },
     ];
     return (
-        <>
-            <section className="flex justify-center items-center h-32 bg-primary mb-8">
-                <h1 className="text-accent text-3xl font-bold">NOVEDADES</h1>
-                <Carousel opts={{align: 'start', loop: true}} className='w-full'>
-                    <CarouselContent>
+        <section className="py-16 bg-gray-50">
+            <div className="container mx-auto px-6">
+                <h2 className="text-3xl font-bold text-secondary text-center mb-12 md:text-4xl lg:text-5xl">NOVEDADES</h2>
+                <Carousel opts={{ align: 'start', loop: true }} className="w-full max-w-7xl mx-auto">
+                    <CarouselContent className="-ml-4">
                         {news.map((item, index) => (
-                            <CarouselItem key={index} className="p-4">
-                                <Card key={item.title} className="relative basis-1/3 mx-auto w-full max-w-sm pt-0">
-                                    <div className="absolute inset-0 z-30 aspect-video" />
-                                    <Image
-                                        src={item.video}
-                                        alt={item.title}
-                                        width={300}
-                                        height={200}
-                                        className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
-                                    />
+                            <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                                <Card className="overflow-hidden h-full">
+                                    <Image src={item.video} alt={item.title} width={400} height={300} className="w-full object-cover aspect-video" />
                                     <CardHeader>
                                         <CardTitle>{item.title}</CardTitle>
                                         <CardDescription>{item.description}</CardDescription>
@@ -47,10 +40,10 @@ export default function News() {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
+                    <CarouselPrevious className="left-0" />
+                    <CarouselNext className="right-0" />
                 </Carousel>
-            </section>
-        </>
+            </div>
+        </section>
     );
 }
