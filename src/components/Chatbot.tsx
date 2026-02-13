@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { chatData, ChatResponse, ChatOption } from '@/content/chatData';
+import { getChatData, ChatResponse, ChatOption } from '@/content/chatData';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/card';
 
@@ -15,8 +15,21 @@ interface Message {
 
 export default function Chatbot() {
     const [isOpen, setIsOpen] = useState(false);
-    const [messages, setMessages] = useState<Message[]>([{ type: 'bot', content: chatData.text, response: chatData }]);
+    const [messages, setMessages] = useState<Message[]>([]);
     const messagesEndRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const checkScreenSize = () => {
+            const isLarge = window.innerWidth >= 1024;
+            if (messages.length === 0) {
+                const chatData = getChatData(isLarge);
+                setMessages([{ type: 'bot', content: chatData.text, response: chatData }]);
+            }
+        };
+        checkScreenSize();
+        window.addEventListener('resize', checkScreenSize);
+        return () => window.removeEventListener('resize', checkScreenSize);
+    }, [messages.length]);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
