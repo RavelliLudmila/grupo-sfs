@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { Button } from './ui/button';
 import { ButtonGroup } from './ui/button-group';
-import { Card, CardDescription, CardHeader, CardTitle } from './ui/card';
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { ArrowRight } from 'lucide-react';
 
 export default function Products() {
@@ -15,26 +15,26 @@ export default function Products() {
             image: '/images/hero-bg.webp',
             name: 'HealthCareAI',
             description: 'Modulo completo al servicio de instituciones, profesionales y pacientes. Facilita procesos y mejora los productos de SFS.',
-            link: 'https://www.sfs.com.ar/healthcare-ai',
+            link: '/healthcare-ai',
         },
         {
             image: '/images/hero-bg.webp',
             name: 'HealthCare',
             description:
                 'Solución integral para la gestión de datos clínicos y administrativos. Facilita la interoperabilidad entre diferentes sistemas.',
-            link: 'https://www.sfs.com.ar/healthcare',
+            link: '/healthcare',
         },
         {
             image: '/images/hero-bg.webp',
             name: 'HealthTrack',
             description: 'Permite el seguimiento y monitoreo de la salud de los pacientes en tiempo real.',
-            link: 'https://www.sfs.com.ar/healthtrack',
+            link: '/healthtrack',
         },
         {
             image: '/images/hero-bg.webp',
             name: 'SAPma',
             description: 'Aplicaciones y modulos web para la administración de aseguradoras y financiadoras de salud.',
-            link: 'https://www.sfs.com.ar/sapma',
+            link: '/sapma',
         },
     ];
     const productsPatients = [
@@ -57,30 +57,28 @@ export default function Products() {
 
     return (
         <>
-            <section className="container mx-auto px-6 py-20 text-center">
-                <h2 className="text-3xl font-bold text-secondary md:text-4xl lg:text-5xl">PRODUCTOS Y SOLUCIONES DE SOFTWARE</h2>
-                <ButtonGroup className="justify-center mt-8 bg-button-inactive">
+            <section className="container flex flex-col justify-between items-center mx-auto px-6 py-20 text-center">
+                <h2 className="text-3xl font-bold text-secondary">PRODUCTOS Y SOLUCIONES DE SOFTWARE</h2>
+                <ButtonGroup className="justify-center mt-8 bg-button-inactive rounded-md">
                     <Button
-                        {...(showInstitutions ? { variant: 'secondary' } : { variant: 'ghost' })}
+                        {...(showInstitutions ? { variant: 'select' } : { variant: 'ghost' })}
                         size="lg"
                         onClick={() => setShowInstitutions(true)}
                     >
                         Para instituciones
                     </Button>
                     <Button
-                        {...(!showInstitutions ? { variant: 'secondary' } : { variant: 'ghost' })}
+                        {...(!showInstitutions ? { variant: 'select' } : { variant: 'ghost' })}
                         size="lg"
                         onClick={() => setShowInstitutions(false)}
                     >
                         Para sus pacientes
                     </Button>
                 </ButtonGroup>
-                <div
-                    className={`mt-10 grid gap-8 ${showInstitutions ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}
-                >
+                <div className={`mt-10 grid gap-8 ${showInstitutions ? 'grid-cols-2 lg:grid-cols-4' : 'grid-cols-2 lg:grid-cols-3 lg:w-3/4'}`}>
                     {showInstitutions
                         ? productsInstitutions.map((product) => (
-                              <Card key={product.name} className="relative mx-auto w-full max-w-sm overflow-hidden">
+                              <Card key={product.name} className="relative mx-auto w-full overflow-hidden pt-0">
                                   <Image
                                       src={product.image}
                                       alt={product.name}
@@ -88,18 +86,22 @@ export default function Products() {
                                       height={300}
                                       className="w-full object-cover aspect-video"
                                   />
-                                  <CardHeader>
-                                      <CardTitle>{product.name}</CardTitle>
-                                      <CardDescription>{product.description}</CardDescription>
-                                      <Button variant="link" size="sm" className="mt-4" onClick={() => window.open(product.link)}>
-                                          Ver más
-                                          <ArrowRight className="ml-2" />
-                                      </Button>
-                                  </CardHeader>
+                                  <div className="flex flex-col h-full justify-between">
+                                      <CardHeader className="text-start">
+                                          <CardTitle>{product.name}</CardTitle>
+                                          <CardDescription>{product.description}</CardDescription>
+                                      </CardHeader>
+                                      <CardFooter className="pt-6">
+                                          <Button variant="link" size="sm" className="justify-start p-0" onClick={() => window.open(product.link)}>
+                                              Ver más
+                                              <ArrowRight className="ml-2" />
+                                          </Button>
+                                      </CardFooter>
+                                  </div>
                               </Card>
                           ))
                         : productsPatients.map((product) => (
-                              <Card key={product.name} className="relative mx-auto w-full max-w-sm overflow-hidden">
+                              <Card key={product.name} className="relative mx-auto w-full overflow-hidden pt-0">
                                   <Image
                                       src={product.image}
                                       alt={product.name}
@@ -107,7 +109,7 @@ export default function Products() {
                                       height={300}
                                       className="w-full object-cover aspect-video"
                                   />
-                                  <CardHeader>
+                                  <CardHeader className="text-start">
                                       <CardTitle>{product.name}</CardTitle>
                                       <CardDescription>{product.description}</CardDescription>
                                   </CardHeader>
