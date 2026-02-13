@@ -32,7 +32,7 @@ export default function News() {
                 <CarouselContent className="py-3 -ml-1">
                     {displayNews.map((item, index) => (
                         <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                            <Card className="overflow-hidden h-full pt-0 text-start">
+                            <Card className="overflow-hidden h-full pt-0! text-start">
                                 <Image src={item.video} alt={item.title} width={400} height={300} className="w-full object-cover aspect-video" />
                                 <CardHeader>
                                     <CardTitle>{item.title}</CardTitle>

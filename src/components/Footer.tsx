@@ -3,13 +3,25 @@
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from './ui/button';
+import { useEffect, useState } from 'react';
 
 export default function Footer() {
+    const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsLargeScreen(window.innerWidth >= 1024);
+        };
+        checkScreenSize();
+        window.addEventListener('resize', checkScreenSize);
+        return () => window.removeEventListener('resize', checkScreenSize);
+    }, []);
+
     const link = [
         {
             icon: <Mail className="h-5 w-5" />,
             text: 'info@sfs.com.ar',
-            href: 'https://mail.google.com/mail/u/0/?to=info@sfs.com.ar&fs=1&tf=cm',
+            href: isLargeScreen ? 'https://mail.google.com/mail/u/0/?to=info@sfs.com.ar&fs=1&tf=cm' : 'mailto:info@sfs.com.ar',
         },
         {
             icon: <Phone className="h-5 w-5" />,
@@ -27,11 +39,7 @@ export default function Footer() {
             <div className="container mx-auto px-8 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                     <div className="flex flex-col items-start">
-                        <Button 
-                            variant="link"
-                            className="p-0 mb-4"
-                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                        >
+                        <Button variant="link" className="p-0 mb-4" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                             <Image src="/images/footer-logo.webp" alt="Logo" width={120} height={40} />
                         </Button>
                         <p className="text-sm leading-relaxed">Desarrollando soluciones médicas innovadoras desde hace más de 30 años.</p>

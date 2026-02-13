@@ -89,7 +89,7 @@ export default function Products() {
                 <div className={`mt-10 grid gap-8 ${showInstitutions ? 'grid-cols-2 lg:grid-cols-4' : 'grid-cols-2 lg:grid-cols-3 lg:w-3/4'}`}>
                     {showInstitutions
                         ? productsInstitutions.map((product) => (
-                              <Card key={product.name} className="relative mx-auto w-full overflow-hidden pt-0">
+                              <Card key={product.name} className="relative mx-auto w-full overflow-hidden pt-0!">
                                   <Image
                                       src={product.image}
                                       alt={product.name}
@@ -112,7 +112,7 @@ export default function Products() {
                               </Card>
                           ))
                         : productsPatients.map((product) => (
-                              <Card key={product.name} className="relative mx-auto w-full overflow-hidden pt-0">
+                              <Card key={product.name} className="relative mx-auto w-full overflow-hidden pt-0!">
                                   <Image
                                       src={product.image}
                                       alt={product.name}
