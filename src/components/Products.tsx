@@ -9,7 +9,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Products() {
     const [showInstitutions, setShowInstitutions] = useState(true);
-    
+
     const productsInstitutions = [
         {
             image: '/images/hero-bg.webp',
@@ -60,24 +60,33 @@ export default function Products() {
             <section className="container mx-auto px-6 py-20 text-center">
                 <h2 className="text-3xl font-bold text-secondary md:text-4xl lg:text-5xl">PRODUCTOS Y SOLUCIONES DE SOFTWARE</h2>
                 <ButtonGroup className="justify-center mt-8 bg-button-inactive">
-                    <Button {...(showInstitutions ? { variant: "secondary" } : { variant: "ghost" })} size="lg" className="mt-5" onClick={() => setShowInstitutions(true)}>
+                    <Button
+                        {...(showInstitutions ? { variant: 'secondary' } : { variant: 'ghost' })}
+                        size="lg"
+                        onClick={() => setShowInstitutions(true)}
+                    >
                         Para instituciones
                     </Button>
-                    <Button {...(!showInstitutions ? { variant: "secondary" } : { variant: "ghost" })} size="lg" className="mt-5" onClick={() => setShowInstitutions(false)}>
+                    <Button
+                        {...(!showInstitutions ? { variant: 'secondary' } : { variant: 'ghost' })}
+                        size="lg"
+                        onClick={() => setShowInstitutions(false)}
+                    >
                         Para sus pacientes
                     </Button>
                 </ButtonGroup>
-                <div className="mt-10 grid gap-8 grid-cols-4">
+                <div
+                    className={`mt-10 grid gap-8 ${showInstitutions ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}
+                >
                     {showInstitutions
                         ? productsInstitutions.map((product) => (
-                              <Card key={product.name} className="relative mx-auto w-full max-w-sm pt-0">
-                                  <div className="absolute inset-0 z-30 aspect-video" />
+                              <Card key={product.name} className="relative mx-auto w-full max-w-sm overflow-hidden">
                                   <Image
                                       src={product.image}
                                       alt={product.name}
                                       width={400}
                                       height={300}
-                                      className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
+                                      className="w-full object-cover aspect-video"
                                   />
                                   <CardHeader>
                                       <CardTitle>{product.name}</CardTitle>
@@ -90,14 +99,13 @@ export default function Products() {
                               </Card>
                           ))
                         : productsPatients.map((product) => (
-                              <Card key={product.name} className="relative mx-auto w-full max-w-sm pt-0">
-                                  <div className="absolute inset-0 z-30 aspect-video" />
+                              <Card key={product.name} className="relative mx-auto w-full max-w-sm overflow-hidden">
                                   <Image
                                       src={product.image}
                                       alt={product.name}
                                       width={400}
                                       height={300}
-                                      className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
+                                      className="w-full object-cover aspect-video"
                                   />
                                   <CardHeader>
                                       <CardTitle>{product.name}</CardTitle>
@@ -106,7 +114,7 @@ export default function Products() {
                               </Card>
                           ))}
                 </div>
-                <h3 className="text-2xl text-secondary">¿Querés tener una experiencia personalizada?</h3>
+                <h3 className="text-2xl text-secondary mt-12">¿Querés tener una experiencia personalizada?</h3>
                 <Button variant="default" size="lg" className="mt-5" onClick={() => window.open('/presentation')}>
                     Solicitar presentación
                 </Button>
