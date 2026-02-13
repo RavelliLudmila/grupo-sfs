@@ -66,10 +66,10 @@ export default function Navbar() {
             </div>
             <div className="flex items-center gap-3">
                 <Button variant="default" onClick={() => window.open('/presentacion', '_blank')}>
-                    Presentación
+                    Solicitar presentación
                 </Button>
                 <Button variant="secondary" onClick={() => window.open('https://online.sfssa.com.ar', '_blank')}>
-                    Acceder
+                    Acceder al sistema
                 </Button>
             </div>
         </nav>

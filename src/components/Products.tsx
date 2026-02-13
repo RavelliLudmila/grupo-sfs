@@ -13,7 +13,7 @@ export default function Products() {
     const productsInstitutions = [
         {
             image: '/images/hero-bg.webp',
-            name: 'HealthCareAI',
+            name: 'HealthCare AI',
             description: 'Modulo completo al servicio de instituciones, profesionales y pacientes. Facilita procesos y mejora los productos de SFS.',
             link: '/healthcare-ai',
         },
