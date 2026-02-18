@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { getChatData, ChatResponse, ChatOption } from '@/content/chatData';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/card';
+import { Dialog, DialogContent } from './ui/dialog';
+import PresentationForm from './PresentationForm';
 
 interface Message {
     type: 'bot' | 'user';
@@ -16,6 +18,7 @@ interface Message {
 export default function Chatbot() {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState<Message[]>([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -43,6 +46,14 @@ export default function Chatbot() {
         setMessages((prev) => prev.map((msg, idx) => (idx === messageIndex ? { ...msg, answered: true } : msg)));
 
         setMessages((prev) => [...prev, { type: 'user', content: option.text }]);
+
+        // Si es "Solicitar presentación", abrir modal
+        if (option.text === 'Solicitar presentación' || option.text.toLowerCase().includes('solicitar presentación')) {
+            setTimeout(() => {
+                setIsModalOpen(true);
+            }, 300);
+            return;
+        }
 
         if (option.action?.type === 'link' && option.action.url) {
             setTimeout(() => {
@@ -129,14 +140,19 @@ export default function Chatbot() {
                                                                         </Button>
                                                                     )}
                                                                     {product.actions.secondary && (
-                                                                        <Button asChild size="xs" variant="outline" className="text-xs h-7">
-                                                                            <a
-                                                                                href={product.actions.secondary.url}
-                                                                                target="_blank"
-                                                                                rel="noopener noreferrer"
-                                                                            >
-                                                                                {product.actions.secondary.text}
-                                                                            </a>
+                                                                        <Button
+                                                                            size="xs"
+                                                                            variant="outline"
+                                                                            className="text-xs h-7"
+                                                                            onClick={() => {
+                                                                                if (product.actions.secondary?.text === 'Solicitar presentación') {
+                                                                                    setIsModalOpen(true);
+                                                                                } else if (product.actions.secondary?.url) {
+                                                                                    window.open(product.actions.secondary.url, '_blank');
+                                                                                }
+                                                                            }}
+                                                                        >
+                                                                            {product.actions.secondary.text}
                                                                         </Button>
                                                                     )}
                                                                 </div>
@@ -175,6 +191,12 @@ export default function Chatbot() {
                     </div>
                 </div>
             )}
+
+            <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+                <DialogContent className="max-w-md">
+                    <PresentationForm />
+                </DialogContent>
+            </Dialog>
         </>
     );
 }

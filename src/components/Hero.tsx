@@ -1,8 +1,13 @@
 'use client';
 
+import { useState } from 'react';
 import { Button } from './ui/button';
+import { Dialog, DialogContent } from './ui/dialog';
+import PresentationForm from './PresentationForm';
 
 export default function Hero() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <section className="relative w-full min-h-150 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/hero-bg.webp')" }}>
             <div className="absolute inset-0 bg-linear-to-r from-primary to-black/50" />
@@ -15,16 +20,17 @@ export default function Hero() {
                     <p className="mt-4 text-lg text-white md:text-xl lg:text-2xl">
                         Simplifique la gestión de sus servicios, y optimice la atención a sus pacientes.
                     </p>
-                    <Button
-                        variant="outline"
-                        size="lg"
-                        className="mt-8 font-semibold px-8"
-                        onClick={() => window.open('https://mail.google.com/mail/?view=cm&fs=1&to=info@sfs.com.ar&su=Solicito+una+presentación&body=Hola,%0A%0AQuisiera+solicitar+una+presentación.%0A%0A%5BPor+favor+completar+los+siguientes+datos%5D%0A%0A-+Nombre+y+Apellido:%0A-+Correo+electrónico:%0A-+Número+de+teléfono:%0A-+Ciudad:%0A-+Institución:%0A%0AQuedo+a+la+espera.+Muchas+gracias.', '_blank')}
-                    >
+                    <Button variant="outline" size="lg" className="mt-8 font-semibold px-8" onClick={() => setIsModalOpen(true)}>
                         Solicitar presentación
                     </Button>
                 </div>
             </div>
+
+            <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+                <DialogContent className="max-w-md">
+                    <PresentationForm />
+                </DialogContent>
+            </Dialog>
         </section>
     );
 }

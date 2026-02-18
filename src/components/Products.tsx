@@ -6,43 +6,35 @@ import { Button } from './ui/button';
 import { ButtonGroup } from './ui/button-group';
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { ArrowRight } from 'lucide-react';
-import { GMAIL_LINK, MAILTO_LINK } from '@/lib/constants';
+import { Dialog, DialogContent } from './ui/dialog';
+import PresentationForm from './PresentationForm';
 
 export default function Products() {
     const [showInstitutions, setShowInstitutions] = useState(true);
-    const [isLargeScreen, setIsLargeScreen] = useState(false);
-
-    useEffect(() => {
-        const checkScreenSize = () => {
-            setIsLargeScreen(window.innerWidth >= 1024);
-        };
-        checkScreenSize();
-        window.addEventListener('resize', checkScreenSize);
-        return () => window.removeEventListener('resize', checkScreenSize);
-    }, []);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const productsInstitutions = [
         {
-            image: '/images/hero-bg.webp',
+            image: '/images/healthcare-ai.webp',
             name: 'HealthCare AI',
             description: 'Modulo completo al servicio de instituciones, profesionales y pacientes. Facilita procesos y mejora los productos de SFS.',
             link: '/healthcare-ai',
         },
         {
-            image: '/images/hero-bg.webp',
+            image: '/images/healthcare.webp',
             name: 'HealthCare',
             description:
                 'Solución integral para la gestión de datos clínicos y administrativos. Facilita la interoperabilidad entre diferentes sistemas.',
             link: '/healthcare',
         },
         {
-            image: '/images/hero-bg.webp',
+            image: '/images/healthtrack.webp',
             name: 'HealthTrack',
             description: 'Permite el seguimiento y monitoreo de la salud de los pacientes en tiempo real.',
             link: '/healthtrack',
         },
         {
-            image: '/images/hero-bg.webp',
+            image: '/images/SAPma.webp',
             name: 'SAPma',
             description: 'Aplicaciones y modulos web para la administración de aseguradoras y financiadoras de salud.',
             link: '/sapma',
@@ -50,17 +42,17 @@ export default function Products() {
     ];
     const productsPatients = [
         {
-            image: '/images/hero-bg.webp',
+            image: '/images/app.webp',
             name: 'App para el paciente',
             description: 'Aplicación móvil para facilitar el acceso de los pacientes a su información clínica.',
         },
         {
-            image: '/images/hero-bg.webp',
+            image: '/images/teleconsulta.webp',
             name: 'Teleconsulta',
             description: 'Consultas Paciente-Profesional desde la comodidad de su hogar.',
         },
         {
-            image: '/images/hero-bg.webp',
+            image: '/images/triage.webp',
             name: 'Triage',
             description: 'Protocolo de selección y clasificación de pacientes.',
         },
@@ -128,10 +120,16 @@ export default function Products() {
                           ))}
                 </div>
                 <h3 className="text-2xl text-secondary mt-12">¿Querés tener una experiencia personalizada?</h3>
-                <Button variant="default" size="lg" className="mt-5" onClick={() => window.open(isLargeScreen ? GMAIL_LINK : MAILTO_LINK, '_blank')}>
+                <Button variant="default" size="lg" className="mt-5" onClick={() => setIsModalOpen(true)}>
                     Solicitar presentación
                 </Button>
             </section>
+
+            <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+                <DialogContent className="max-w-md">
+                    <PresentationForm />
+                </DialogContent>
+            </Dialog>
         </>
     );
 }

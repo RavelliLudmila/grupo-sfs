@@ -4,15 +4,11 @@ import { useState } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { X, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import * as yup from 'yup';
+import { DialogClose, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from './ui/dialog';
 
-interface PresentationFormProps {
-    onClose?: () => void;
-}
-
-type FormState = 'idle' | 'loading' | 'success' | 'error';
+type FormState = 'inactive' | 'loading' | 'success' | 'error';
 
 const validationSchema = yup.object().shape({
     fullName: yup
@@ -27,7 +23,7 @@ const validationSchema = yup.object().shape({
     institution: yup.string().required('Escriba una institución para continuar').trim(),
 });
 
-export default function PresentationForm({ onClose }: PresentationFormProps) {
+export default function PresentationForm() {
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -35,7 +31,7 @@ export default function PresentationForm({ onClose }: PresentationFormProps) {
         city: '',
         institution: '',
     });
-    const [formState, setFormState] = useState<FormState>('idle');
+    const [formState, setFormState] = useState<FormState>('inactive');
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
     const validateForm = async (): Promise<boolean> => {
@@ -108,56 +104,59 @@ export default function PresentationForm({ onClose }: PresentationFormProps) {
     };
 
     const handleRetry = () => {
-        setFormState('idle');
+        setFormState('inactive');
     };
 
     if (formState === 'success') {
         return (
-            <Card className="w-full max-w-md relative">
-                <CardContent className="pt-6">
-                    {onClose && (
-                        <Button onClick={onClose} variant="ghost" size="icon" className="absolute rounded-full top-4 right-4 hover:bg-accent/25">
-                            <X size={20} />
-                        </Button>
-                    )}
+            <>
+                <DialogClose asChild>
+                    <Button variant="ghost" size="icon" className="absolute rounded-full top-4 right-4 hover:bg-accent/25">
+                        <X size={20} />
+                    </Button>
+                </DialogClose>
 
-                    <div className="flex flex-col items-center justify-center py-12 text-center">
-                        <CheckCircle2 className="w-16 h-16 text-green-500 mb-4" />
-                        <h2 className="text-2xl font-bold mb-2">¡Solicitud enviada!</h2>
-                        <p className="text-muted-foreground mb-2">En breve nos vamos a comunicar con vos al correo:</p>
-                        <p className="font-semibold text-primary">{formData.email}</p>
-                    </div>
-                </CardContent>
-            </Card>
+                <div className="flex flex-col items-center justify-center py-12 text-center">
+                    <CheckCircle2 className="w-16 h-16 text-green-500 mb-4" />
+                    <DialogHeader className="items-center">
+                        <DialogTitle className="text-2xl">¡Solicitud enviada!</DialogTitle>
+                        <DialogDescription>En breve nos vamos a comunicar con vos al correo:</DialogDescription>
+                    </DialogHeader>
+                    <p className="font-semibold text-primary mt-2">{formData.email}</p>
+                </div>
+            </>
         );
     }
 
     if (formState === 'error') {
         return (
-            <Card className="w-full max-w-md relative">
-                <CardContent className="pt-6">
-                    {onClose && (
-                        <Button onClick={onClose} variant="ghost" size="icon" className="absolute rounded-full top-4 right-4 hover:bg-accent/25">
-                            <X size={20} />
-                        </Button>
-                    )}
-                    <div className="flex flex-col items-center justify-center py-12 text-center">
-                        <div className="w-16 h-16 rounded-full bg-destructive/10 flex items-center justify-center mb-4">
-                            <AlertCircle className="w-8 h-8 text-destructive" />
-                        </div>
-                        <h2 className="text-2xl font-bold mb-2">Error al enviar</h2>
-                        <p className="text-muted-foreground mb-6">Ha ocurrido un error, por favor revisa tus datos o vuelve a intentar más tarde</p>
+            <>
+                <DialogClose asChild>
+                    <Button variant="ghost" size="icon" className="absolute rounded-full top-4 right-4 hover:bg-accent/25">
+                        <X size={20} />
+                    </Button>
+                </DialogClose>
+
+                <div className="flex flex-col items-center justify-center py-12 text-center">
+                    <div className="w-16 h-16 rounded-full bg-destructive/10 flex items-center justify-center mb-4">
+                        <AlertCircle className="w-8 h-8 text-destructive" />
+                    </div>
+                    <DialogHeader className="items-center">
+                        <DialogTitle className="text-2xl">Error al enviar</DialogTitle>
+                        <DialogDescription>Ha ocurrido un error, por favor revisa tus datos o vuelve a intentar más tarde</DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter className="mt-6 sm:justify-center">
                         <Button onClick={handleRetry} variant="secondary">
                             Volver a intentar
                         </Button>
-                    </div>
-                </CardContent>
-            </Card>
+                    </DialogFooter>
+                </div>
+            </>
         );
     }
 
     return (
-        <Card className="w-full max-w-md relative">
+        <>
             {formState === 'loading' && (
                 <div className="absolute inset-0 bg-background/90 backdrop-blur-sm flex items-center justify-center z-10 rounded-lg">
                     <div className="flex flex-col items-center">
@@ -167,21 +166,18 @@ export default function PresentationForm({ onClose }: PresentationFormProps) {
                 </div>
             )}
 
-            <CardHeader>
-                <div className="flex justify-between items-start">
-                    <div className="flex-1">
-                        <CardTitle className="text-2xl">Solicitar presentación</CardTitle>
-                        <CardDescription className="mt-2">Completá el formulario y coordinemos una presentación.</CardDescription>
-                    </div>
-                    {onClose && (
-                        <Button onClick={onClose} variant="ghost" size="icon" className="absolute rounded-full top-4 right-4 hover:bg-accent/25">
-                            <X size={20} />
-                        </Button>
-                    )}
-                </div>
-            </CardHeader>
+            <DialogClose asChild>
+                <Button variant="ghost" size="icon" className="absolute rounded-full top-4 right-4 hover:bg-accent/25">
+                    <X size={20} />
+                </Button>
+            </DialogClose>
 
-            <CardContent>
+            <DialogHeader>
+                <DialogTitle className="text-2xl">Solicitar presentación</DialogTitle>
+                <DialogDescription>Completá el formulario y coordinemos una presentación.</DialogDescription>
+            </DialogHeader>
+
+            <div className="pt-4">
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="space-y-2">
                         <Label htmlFor="fullName">Nombre completo</Label>
@@ -277,11 +273,13 @@ export default function PresentationForm({ onClose }: PresentationFormProps) {
                         )}
                     </div>
 
-                    <Button type="submit" disabled={formState === 'loading'} className="w-full">
-                        Solicitar presentación
-                    </Button>
+                    <DialogFooter>
+                        <Button type="submit" disabled={formState === 'loading'} className="w-full">
+                            Solicitar presentación
+                        </Button>
+                    </DialogFooter>
                 </form>
-            </CardContent>
-        </Card>
+            </div>
+        </>
     );
 }

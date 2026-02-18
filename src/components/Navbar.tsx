@@ -5,11 +5,13 @@ import { Button } from './ui/button';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { GMAIL_LINK, MAILTO_LINK } from '@/lib/constants';
+import { Dialog, DialogContent } from './ui/dialog';
+import PresentationForm from './PresentationForm';
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -56,7 +58,7 @@ export default function Navbar() {
             </div>
 
             <div className="hidden lg:flex items-center gap-3">
-                <Button variant="default" onClick={() => window.open(GMAIL_LINK, '_blank')}>
+                <Button variant="default" onClick={() => setIsModalOpen(true)}>
                     Solicitar presentación
                 </Button>
                 <Button variant="secondary" onClick={() => window.open('https://online.sfssa.com.ar', '_blank')}>
@@ -89,7 +91,7 @@ export default function Navbar() {
                                 variant="default"
                                 className="w-full"
                                 onClick={() => {
-                                    window.open(MAILTO_LINK, '_blank');
+                                    setIsModalOpen(true);
                                     setIsMenuOpen(false);
                                 }}
                             >
@@ -109,6 +111,12 @@ export default function Navbar() {
                     </div>
                 </div>
             )}
+
+            <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+                <DialogContent className="max-w-md">
+                    <PresentationForm />
+                </DialogContent>
+            </Dialog>
         </nav>
     );
 }
