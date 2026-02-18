@@ -17,22 +17,12 @@ interface Message {
 
 export default function Chatbot() {
     const [isOpen, setIsOpen] = useState(false);
-    const [messages, setMessages] = useState<Message[]>([]);
+    const [messages, setMessages] = useState<Message[]>(() => {
+        const chatData = getChatData();
+        return [{ type: 'bot', content: chatData.text, response: chatData }];
+    });
     const [isModalOpen, setIsModalOpen] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const checkScreenSize = () => {
-            const isLarge = window.innerWidth >= 1024;
-            if (messages.length === 0) {
-                const chatData = getChatData(isLarge);
-                setMessages([{ type: 'bot', content: chatData.text, response: chatData }]);
-            }
-        };
-        checkScreenSize();
-        window.addEventListener('resize', checkScreenSize);
-        return () => window.removeEventListener('resize', checkScreenSize);
-    }, [messages.length]);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -47,8 +37,7 @@ export default function Chatbot() {
 
         setMessages((prev) => [...prev, { type: 'user', content: option.text }]);
 
-        // Si es "Solicitar presentación", abrir modal
-        if (option.text === 'Solicitar presentación' || option.text.toLowerCase().includes('solicitar presentación')) {
+        if (option.text === 'Solicitar presentación') {
             setTimeout(() => {
                 setIsModalOpen(true);
             }, 300);

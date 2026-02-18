@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Card, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel';
 import type { CarouselApi } from '@/components/ui/carousel';
+import { Button } from './ui/button';
 
 interface Video {
     id: string;
@@ -108,8 +109,8 @@ export default function News() {
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             allowFullScreen
                                         />
-                                        <CardHeader className="p-3 sm:p-4 lg:p-6">
-                                            <CardTitle className="text-base sm:text-lg">{item.title}</CardTitle>
+                                        <CardHeader className="pb-3 lg:pb-0 px-4 lg:px-6">
+                                            <CardTitle className="text-base sm:text-lg line-clamp-1">{item.title}</CardTitle>
                                             <CardDescription className="text-xs sm:text-sm line-clamp-2">{item.description}</CardDescription>
                                         </CardHeader>
                                     </Card>
@@ -133,6 +134,14 @@ export default function News() {
                             />
                         ))}
                     </div>
+                    <Button
+                        variant="secondary"
+                        size="lg"
+                        className="mt-5"
+                        onClick={() => window.open('https://youtube.com/@gruposantafesistemas', '_blank')}
+                    >
+                        Ver más
+                    </Button>
                 </>
             )}
         </section>

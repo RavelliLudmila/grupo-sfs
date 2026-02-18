@@ -1,5 +1,3 @@
-import { GMAIL_LINK, MAILTO_LINK } from '@/lib/constants';
-
 export interface ChatOption {
     id: string;
     text: string;
@@ -21,13 +19,11 @@ export interface ProductInfo {
     description: string;
     actions: {
         primary?: { text: string; url: string };
-        secondary?: { text: string; url: string };
+        secondary?: { text: string; url?: string };
     };
 }
 
-export const getChatData = (isLargeScreen: boolean): ChatResponse => {
-    const contactLink = isLargeScreen ? GMAIL_LINK : MAILTO_LINK;
-
+export const getChatData = (): ChatResponse => {
     return {
         text: '¡Hola!👋\nSoy el asistente virtual de Santa Fe Sistemas.\nTe ayudo a conocer nuestras soluciones de salud digital y a identificar la que mejor se adapta a lo que estás buscando.',
         options: [
@@ -43,7 +39,7 @@ export const getChatData = (isLargeScreen: boolean): ChatResponse => {
                                 'SFS HealthCare es una solución integral para la gestión de datos clínicos y administrativos, interoperable y adaptable a cada institución. Incluye historia clínica electrónica, turnos, facturación, interoperabilidad y más, todo en una plataforma 100% web.',
                             actions: {
                                 primary: { text: 'Ver más', url: '/healthcare' },
-                                secondary: { text: 'Solicitar presentación', url: contactLink },
+                                secondary: { text: 'Solicitar presentación' },
                             },
                         },
                         {
@@ -52,7 +48,7 @@ export const getChatData = (isLargeScreen: boolean): ChatResponse => {
                                 'SFS HealthTrack permite el seguimiento y monitoreo de la salud de los pacientes en tiempo real, utilizando inteligencia artificial para análisis predictivos y mejor toma de decisiones clínicas.',
                             actions: {
                                 primary: { text: 'Ver más', url: '/healthtrack' },
-                                secondary: { text: 'Solicitar presentación', url: contactLink },
+                                secondary: { text: 'Solicitar presentación' },
                             },
                         },
                         {
@@ -61,7 +57,7 @@ export const getChatData = (isLargeScreen: boolean): ChatResponse => {
                                 'Nuestra IA está integrada a los procesos reales del sistema de salud. Utiliza modelos específicos del ámbito médico y funciona como herramienta de asistencia, siempre con supervisión profesional.',
                             actions: {
                                 primary: { text: 'Ver más', url: '/healthcare-ai' },
-                                secondary: { text: 'Solicitar presentación', url: contactLink },
+                                secondary: { text: 'Solicitar presentación' },
                             },
                         },
                         {
@@ -69,7 +65,7 @@ export const getChatData = (isLargeScreen: boolean): ChatResponse => {
                             description:
                                 'Acompañamos a cada institución desde el diagnóstico inicial hasta la puesta en marcha y evolución del sistema. Nuestro equipo brinda soporte continuo y personalizado.',
                             actions: {
-                                secondary: { text: 'Solicitar presentación', url: contactLink },
+                                secondary: { text: 'Solicitar presentación' },
                             },
                         },
                     ],
@@ -84,7 +80,6 @@ export const getChatData = (isLargeScreen: boolean): ChatResponse => {
                         {
                             id: 'solicitar-sapma',
                             text: 'Solicitar presentación',
-                            action: { type: 'link', url: contactLink },
                         },
                     ],
                 },
@@ -103,7 +98,6 @@ export const getChatData = (isLargeScreen: boolean): ChatResponse => {
                         {
                             id: 'solicitar-info',
                             text: 'Solicitar presentación',
-                            action: { type: 'link', url: contactLink },
                         },
                     ],
                 },

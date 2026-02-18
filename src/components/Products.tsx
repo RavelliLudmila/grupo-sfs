@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button } from './ui/button';
 import { ButtonGroup } from './ui/button-group';
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
@@ -78,7 +78,7 @@ export default function Products() {
                         Para sus pacientes
                     </Button>
                 </ButtonGroup>
-                <div className={`mt-10 grid gap-8 ${showInstitutions ? 'grid-cols-2 lg:grid-cols-4' : 'grid-cols-2 lg:grid-cols-3 lg:w-3/4'}`}>
+                <div className={`mt-10 grid gap-8 ${showInstitutions ? 'grid-cols-1 lg:grid-cols-4' : 'grid-cols-1 lg:grid-cols-3 lg:w-3/4'}`}>
                     {showInstitutions
                         ? productsInstitutions.map((product) => (
                               <Card key={product.name} className="relative mx-auto w-full overflow-hidden pt-0!">
