@@ -39,11 +39,6 @@ export default function Chatbot() {
         setMessages((prev) => [...prev, { type: 'user', content: option.text }]);
 
         if (option.text === 'Solicitar presentación') {
-            if (option.id === 'solicitar-sapma') {
-                setFormSource('SAPma');
-            } else {
-                setFormSource('General');
-            }
             setTimeout(() => {
                 setIsModalOpen(true);
             }, 300);

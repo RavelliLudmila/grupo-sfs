@@ -75,11 +75,16 @@ export const getChatData = (): ChatResponse => {
                 id: 'aseguradora',
                 text: 'Soy una aseguradora / gerenciadora',
                 response: {
-                    text: 'Contamos con SAPma, una solución administrativa diseñada para financiadores de salud.\nPermite gestionar afiliados, facturación, nomencladores y procesos administrativos de forma integrada.',
-                    options: [
+                    text: 'Perfecto, esta es nuestra solución para aseguradoras y gerenciadoras:',
+                    products: [
                         {
-                            id: 'solicitar-sapma',
-                            text: 'Solicitar presentación',
+                            title: 'SAPma',
+                            description:
+                                'SAPma es una solución administrativa diseñada para financiadores de salud.Permite gestionar afiliados, facturación, nomencladores y procesos administrativos de forma integrada.',
+                            actions: {
+                                primary: { text: 'Ver más', url: '/sapma' },
+                                secondary: { text: 'Solicitar presentación' },
+                            },
                         },
                     ],
                 },
