@@ -13,17 +13,6 @@ interface Video {
     videoId: string;
 }
 
-interface YouTubePlaylistItem {
-    id: string;
-    snippet: {
-        title: string;
-        description: string;
-        resourceId: {
-            videoId: string;
-        };
-    };
-}
-
 export default function News() {
     const [videos, setVideos] = useState<Video[]>([]);
     const [loading, setLoading] = useState(true);
@@ -34,19 +23,8 @@ export default function News() {
 
     useEffect(() => {
         const fetchPlaylistVideos = async () => {
-            const apiKey = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
-            const playlistId = process.env.NEXT_PUBLIC_YOUTUBE_PLAYLIST_ID;
-
-            if (!apiKey || !playlistId) {
-                setError('Configuración de YouTube no encontrada');
-                setLoading(false);
-                return;
-            }
-
             try {
-                const response = await fetch(
-                    `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${playlistId}&key=${apiKey}`,
-                );
+                const response = await fetch('/api/youtube');
 
                 if (!response.ok) {
                     throw new Error('Error al obtener videos de YouTube');
@@ -54,14 +32,12 @@ export default function News() {
 
                 const data = await response.json();
 
-                const fetchedVideos: Video[] = data.items.map((item: YouTubePlaylistItem) => ({
-                    id: item.id,
-                    title: item.snippet.title,
-                    description: item.snippet.description,
-                    videoId: item.snippet.resourceId.videoId,
-                }));
+                if (data.error) {
+                    console.error('YouTube API error details:', data);
+                    throw new Error(data.error + (data.details ? ` - ${JSON.stringify(data.details)}` : ''));
+                }
 
-                setVideos(fetchedVideos);
+                setVideos(data.videos);
             } catch (err) {
                 setError(err instanceof Error ? err.message : 'Error desconocido');
             } finally {
@@ -103,11 +79,13 @@ export default function News() {
                                 <CarouselItem key={`${item.id}-${index}`} className="pl-2 sm:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
                                     <Card className="overflow-hidden h-full pt-0! text-start">
                                         <iframe
-                                            src={`https://www.youtube.com/embed/${item.videoId}`}
+                                            src={`https://www.youtube-nocookie.com/embed/${item.videoId}`}
                                             title={item.title}
                                             className="w-full aspect-video"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                             allowFullScreen
+                                            loading="lazy"
+                                            referrerPolicy="strict-origin-when-cross-origin"
                                         />
                                         <CardHeader className="pb-3 lg:pb-0 px-4 lg:px-6">
                                             <CardTitle className="text-base sm:text-lg line-clamp-1">{item.title}</CardTitle>
