@@ -22,6 +22,7 @@ export default function Chatbot() {
         return [{ type: 'bot', content: chatData.text, response: chatData }];
     });
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [formSource, setFormSource] = useState('General');
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
     const scrollToBottom = () => {
@@ -38,6 +39,11 @@ export default function Chatbot() {
         setMessages((prev) => [...prev, { type: 'user', content: option.text }]);
 
         if (option.text === 'Solicitar presentación') {
+            if (option.id === 'solicitar-sapma') {
+                setFormSource('SAPma');
+            } else {
+                setFormSource('General');
+            }
             setTimeout(() => {
                 setIsModalOpen(true);
             }, 300);
@@ -135,6 +141,17 @@ export default function Chatbot() {
                                                                             className="text-xs h-7"
                                                                             onClick={() => {
                                                                                 if (product.actions.secondary?.text === 'Solicitar presentación') {
+                                                                                    let source = 'General';
+                                                                                    if (product.title.includes('HealthCare (HIS)')) {
+                                                                                        source = 'HealthCare';
+                                                                                    } else if (product.title.includes('HealthTrack')) {
+                                                                                        source = 'HealthTrack';
+                                                                                    } else if (product.title.includes('Inteligencia Artificial')) {
+                                                                                        source = 'HealthCare IA';
+                                                                                    } else if (product.title.includes('SAPma')) {
+                                                                                        source = 'SAPma';
+                                                                                    }
+                                                                                    setFormSource(source);
                                                                                     setIsModalOpen(true);
                                                                                 } else if (product.actions.secondary?.url) {
                                                                                     window.open(product.actions.secondary.url, '_blank');
@@ -183,7 +200,7 @@ export default function Chatbot() {
 
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
                 <DialogContent className="max-w-md">
-                    <PresentationForm />
+                    <PresentationForm source={formSource} />
                 </DialogContent>
             </Dialog>
         </>

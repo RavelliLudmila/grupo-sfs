@@ -10,6 +10,10 @@ import { DialogClose, DialogDescription, DialogFooter, DialogHeader, DialogTitle
 
 type FormState = 'inactive' | 'loading' | 'success' | 'error';
 
+interface PresentationFormProps {
+    source?: string;
+}
+
 const validationSchema = yup.object().shape({
     fullName: yup
         .string()
@@ -23,7 +27,7 @@ const validationSchema = yup.object().shape({
     institution: yup.string().required('Escriba una institución para continuar').trim(),
 });
 
-export default function PresentationForm() {
+export default function PresentationForm({ source = 'General' }: PresentationFormProps) {
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -67,6 +71,7 @@ export default function PresentationForm() {
             const response = await fetch('https://formspree.io/f/mqkogqvn', {
                 method: 'POST',
                 body: JSON.stringify({
+                    _subject: `Solicitud de presentación - ${source}`,
                     nombre: formData.fullName,
                     email: formData.email,
                     telefono: formData.phone,
