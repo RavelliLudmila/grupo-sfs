@@ -15,10 +15,6 @@ export async function GET() {
     const apiKey = process.env.YOUTUBE_API_KEY;
     const playlistId = process.env.YOUTUBE_PLAYLIST_ID;
 
-    console.log('API Key status:', apiKey ? `Loaded (${apiKey.substring(0, 10)}...)` : 'NOT FOUND');
-    console.log('Playlist ID:', playlistId || 'NOT FOUND');
-
-    // Validar que existan las variables de entorno
     if (!apiKey || !playlistId) {
         return NextResponse.json(
             {
@@ -36,17 +32,12 @@ export async function GET() {
         const response = await fetch(
             `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${playlistId}&key=${apiKey}`,
             {
-                headers: {
-                    Referer: 'http://localhost:3000',
-                },
-                // Cachear la respuesta por 1 hora (3600 segundos)
                 next: { revalidate: 3600 },
             },
         );
 
         if (!response.ok) {
             const errorData = await response.json().catch(() => ({}));
-            console.error('YouTube API error:', response.status, errorData);
             return NextResponse.json(
                 {
                     error: 'Error al obtener videos de YouTube',
@@ -59,7 +50,6 @@ export async function GET() {
 
         const data = await response.json();
 
-        // Transformar los datos para enviar solo lo necesario
         const videos = data.items.map((item: YouTubePlaylistItem) => ({
             id: item.id,
             title: item.snippet.title,

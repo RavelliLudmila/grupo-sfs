@@ -33,8 +33,7 @@ export default function News() {
                 const data = await response.json();
 
                 if (data.error) {
-                    console.error('YouTube API error details:', data);
-                    throw new Error(data.error + (data.details ? ` - ${JSON.stringify(data.details)}` : ''));
+                    throw new Error(data.error);
                 }
 
                 setVideos(data.videos);
@@ -86,6 +85,7 @@ export default function News() {
                                             allowFullScreen
                                             loading="lazy"
                                             referrerPolicy="strict-origin-when-cross-origin"
+                                            tabIndex={-1}
                                         />
                                         <CardHeader className="pb-3 lg:pb-0 px-4 lg:px-6">
                                             <CardTitle className="text-base sm:text-lg line-clamp-1">{item.title}</CardTitle>
