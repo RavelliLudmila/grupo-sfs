@@ -9,7 +9,7 @@ export default function Hero() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <section className="relative w-full min-h-150 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/hero-bg.webp')" }}>
+        <section className="relative w-full min-h-150 bg-cover bg-center bg-no-repeat pt-12 lg:pt-24" style={{ backgroundImage: "url('/images/hero-bg.webp')" }}>
             <div className="absolute inset-0 bg-linear-to-r from-primary to-black/50" />
             <div className="relative z-10 max-w-7xl mx-auto px-8 py-24 md:py-32">
                 <div className="max-w-2xl">
