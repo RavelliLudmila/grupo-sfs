@@ -128,8 +128,6 @@ export default function Chatbot() {
                                                                         <Button asChild size="xs" variant="default" className="text-xs h-7">
                                                                             <a
                                                                                 href={product.actions.primary.url}
-                                                                                target="_blank"
-                                                                                rel="noopener noreferrer"
                                                                             >
                                                                                 {product.actions.primary.text}
                                                                             </a>

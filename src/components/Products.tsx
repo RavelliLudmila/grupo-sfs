@@ -8,10 +8,12 @@ import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/c
 import { ArrowRight } from 'lucide-react';
 import { Dialog, DialogContent } from './ui/dialog';
 import PresentationForm from './PresentationForm';
+import { useRouter } from 'next/navigation';
 
 export default function Products() {
     const [showInstitutions, setShowInstitutions] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const router = useRouter();
 
     const productsInstitutions = [
         {
@@ -95,7 +97,7 @@ export default function Products() {
                                           <CardDescription>{product.description}</CardDescription>
                                       </CardHeader>
                                       <CardFooter className="pt-6">
-                                          <Button variant="link" size="sm" className="justify-start p-0" onClick={() => window.open(product.link)}>
+                                          <Button variant="link" size="sm" className="justify-start p-0" onClick={() => router.push(product.link)}>
                                               Ver más
                                               <ArrowRight className="ml-2" />
                                           </Button>

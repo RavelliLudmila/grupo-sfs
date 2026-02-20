@@ -7,11 +7,13 @@ import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Dialog, DialogContent } from './ui/dialog';
 import PresentationForm from './PresentationForm';
+import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const router = useRouter();
 
     // Detecta scroll para cambiar el estilo del navbar
     useEffect(() => {
@@ -49,8 +51,7 @@ export default function Navbar() {
                     <Button
                         key={item.label}
                         variant="link"
-                        rel="noopener noreferrer"
-                        onClick={() => window.open(item.href)}
+                        onClick={() => router.push(item.href)}
                         className="text-base hover:no-underline hover:text-foreground"
                     >
                         {item.label}
@@ -80,7 +81,7 @@ export default function Navbar() {
                                 variant="ghost"
                                 className="justify-start w-full"
                                 onClick={() => {
-                                    window.open(item.href);
+                                    router.push(item.href);
                                     setIsMenuOpen(false);
                                 }}
                             >
