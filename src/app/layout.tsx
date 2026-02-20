@@ -14,34 +14,45 @@ export const metadata: Metadata = {
     metadataBase: new URL('https://www.sfs.com.ar'),
 
     title: {
-        default: 'Grupo SFS',
+        default: 'Grupo SFS | Software Médico y Sistema Hospitalario en Argentina',
         template: '%s | Grupo SFS',
     },
 
     description:
-        'Grupo SFS desarrolla software médico de vanguardia para instituciones de salud. Sistema de Información Hospitalaria integral, IA clínica aplicada a procesos reales y soluciones administrativas para aseguradoras y financiadoras.',
+        'Software médico para hospitales y clínicas en Argentina. HIS integral, IA clínica supervisada y gestión administrativa para financiadoras. Transformá la eficiencia operativa de tu institución.',
 
     keywords: [
-        'software médico',
-        'HeathCare',
         'SFS HealthCare',
-        'HealthCare AI',
         'SFS HealthCare AI',
-        'HealthTrack',
         'SFS HealthTrack',
-        'SAPma',
         'SFS SAPma',
-        'Sistema de Información Hospitalaria Argentina',
-        'sistema hospitalario',
-        'inteligencia artificial en salud',
-        'IA clínica',
+        'HealthCare',
+        'HealthCare AI',
+        'HealthTrack',
+        'SAPma',
+        'agenda médica',
+        'agenda miento médico',
+        'software consultorio',
+        'software médico',
         'software para clínicas',
         'software para hospitales',
+        'sistema de historia clínica',
+        'sistema hospitalario',
+        'turnero médico',
+        'receta electrónica',
+        'videoconsulta',
+        'Telemedicinas',
+        'IA clínica',
+        'IA médica',
+        'inteligencia artificial en salud',
+        'tecnología médica',
+        'HIS Argentina',
+        'Sistema de Información Hospitalaria Argentina',
+        'salud digital Argentina',
         'gestión hospitalaria',
+        'historia clínica digital',
         'historia clínica electrónica',
         'SAPma aseguradoras',
-        'salud digital Argentina',
-        'tecnología médica',
     ],
 
     authors: [{ name: 'Grupo SFS', url: 'https://www.sfs.com.ar' }],
@@ -107,7 +118,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="es-AR">
             <body className={`${arimoSans.variable} antialiased`}>
                 <Navbar />
                 {children}
