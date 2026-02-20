@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 export default function Footer() {
     const [isLargeScreen, setIsLargeScreen] = useState(false);
 
+    // Determina si usar mailto o webmail según el tamaño de pantalla
     useEffect(() => {
         const checkScreenSize = () => {
             setIsLargeScreen(window.innerWidth >= 1024);

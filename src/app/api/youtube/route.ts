@@ -11,6 +11,7 @@ interface YouTubePlaylistItem {
     };
 }
 
+// API route que obtiene videos de una playlist de YouTube con caché de 1 hora
 export async function GET() {
     const apiKey = process.env.YOUTUBE_API_KEY;
     const playlistId = process.env.YOUTUBE_PLAYLIST_ID;

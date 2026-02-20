@@ -13,6 +13,7 @@ export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    // Detecta scroll para cambiar el estilo del navbar
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 0);

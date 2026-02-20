@@ -14,6 +14,7 @@ interface PresentationFormProps {
     source?: string;
 }
 
+// Esquema de validación: nombre completo (2 palabras), email válido, ciudad e institución
 const validationSchema = yup.object().shape({
     fullName: yup
         .string()
@@ -27,6 +28,7 @@ const validationSchema = yup.object().shape({
     institution: yup.string().required('Escriba una institución para continuar').trim(),
 });
 
+// Formulario con validación, envío a Formspree y estados de éxito/error
 export default function PresentationForm({ source = 'General' }: PresentationFormProps) {
     const [formData, setFormData] = useState({
         fullName: '',

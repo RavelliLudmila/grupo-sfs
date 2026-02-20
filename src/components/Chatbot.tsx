@@ -15,8 +15,10 @@ interface Message {
     answered?: boolean;
 }
 
+// Chatbot interactivo con árbol de respuestas predefinidas
 export default function Chatbot() {
     const [isOpen, setIsOpen] = useState(false);
+    // Carga el mensaje inicial del chatbot desde chatData
     const [messages, setMessages] = useState<Message[]>(() => {
         const chatData = getChatData();
         return [{ type: 'bot', content: chatData.text, response: chatData }];
@@ -33,11 +35,13 @@ export default function Chatbot() {
         scrollToBottom();
     }, [messages]);
 
+    // Maneja la selección de opciones: marca como respondido y navega según el tipo de acción
     const handleOptionClick = (option: ChatOption, messageIndex: number) => {
         setMessages((prev) => prev.map((msg, idx) => (idx === messageIndex ? { ...msg, answered: true } : msg)));
 
         setMessages((prev) => [...prev, { type: 'user', content: option.text }]);
 
+        // Abre el formulario si la opción lo indica
         if (option.text === 'Solicitar presentación') {
             setTimeout(() => {
                 setIsModalOpen(true);
@@ -45,6 +49,7 @@ export default function Chatbot() {
             return;
         }
 
+        // Redirige a una URL si la opción contiene un enlace
         if (option.action?.type === 'link' && option.action.url) {
             setTimeout(() => {
                 window.location.href = option.action!.url!;
@@ -52,6 +57,7 @@ export default function Chatbot() {
             return;
         }
 
+        // Agrega la respuesta del bot si existe
         if (option.response) {
             setTimeout(() => {
                 setMessages((prev) => [...prev, { type: 'bot', content: option.response!.text, response: option.response }]);
@@ -135,6 +141,7 @@ export default function Chatbot() {
                                                                             variant="outline"
                                                                             className="text-xs h-7"
                                                                             onClick={() => {
+                                                                                // Determina el origen según el producto seleccionado
                                                                                 if (product.actions.secondary?.text === 'Solicitar presentación') {
                                                                                     let source = 'General';
                                                                                     if (

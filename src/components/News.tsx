@@ -13,6 +13,7 @@ interface Video {
     videoId: string;
 }
 
+// Carrusel de videos desde YouTube con navegación dinámica
 export default function News() {
     const [videos, setVideos] = useState<Video[]>([]);
     const [loading, setLoading] = useState(true);
@@ -21,6 +22,7 @@ export default function News() {
     const [current, setCurrent] = useState(0);
     const [count, setCount] = useState(0);
 
+    // Obtiene videos del API endpoint de YouTube
     useEffect(() => {
         const fetchPlaylistVideos = async () => {
             try {
@@ -47,6 +49,7 @@ export default function News() {
         fetchPlaylistVideos();
     }, []);
 
+    // Sincroniza el estado del carrusel con los indicadores visuales
     useEffect(() => {
         if (!api) {
             return;
