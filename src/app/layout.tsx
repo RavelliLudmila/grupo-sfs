@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     },
 
     description:
-        'Grupo SFS desarrolla software médico de vanguardia para instituciones de salud. HIS integral, IA clínica aplicada a procesos reales y soluciones administrativas para aseguradoras y financiadoras.',
+        'Grupo SFS desarrolla software médico de vanguardia para instituciones de salud. Sistema de Información Hospitalaria integral, IA clínica aplicada a procesos reales y soluciones administrativas para aseguradoras y financiadoras.',
 
     keywords: [
         'software médico',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
         'SFS HealthTrack',
         'SAPma',
         'SFS SAPma',
-        'HIS Argentina',
+        'Sistema de Información Hospitalaria Argentina',
         'sistema hospitalario',
         'inteligencia artificial en salud',
         'IA clínica',
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
         url: 'https://www.sfs.com.ar',
         title: 'Grupo SFS | Software Médico para el sector salud',
         description:
-            'Soluciones digitales para hospitales, clínicas y financiadoras. HIS integral, IA clínica supervisada y sistemas administrativos especializados.',
+            'Soluciones digitales para hospitales, clínicas y financiadoras. Sistema de Información Hospitalaria integral, IA clínica supervisada y sistemas administrativos especializados.',
         siteName: 'Grupo SFS',
         images: [
             {

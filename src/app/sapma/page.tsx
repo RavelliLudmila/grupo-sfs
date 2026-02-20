@@ -5,7 +5,7 @@ export default function SAPma() {
                 <h2 className="text-2xl font-bold text-secondary sm:text-3xl md:text-4xl lg:text-5xl">SAPma</h2>
                 <div className="flex flex-col justify-start items-start gap-3 sm:gap-4 lg:gap-5">
                     <p className="text-sm sm:text-base lg:text-lg text-secondary">
-                        SAPma es el Sistema de Administración de Prestaciones Médico Asistenciales orientado a financiadores y organismos del sector
+                        SAPma es el Sistema de Administración de Prestaciones Médico Asistenciales orientado a financiadoras y organismos del sector
                         salud.
                     </p>
                     <p className="text-sm sm:text-base lg:text-lg text-secondary">

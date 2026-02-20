@@ -39,7 +39,7 @@ export default function Navbar() {
                     alt="Grupo SFS Logo"
                     width={isScrolled ? 40 : 120}
                     height={isScrolled ? 40 : 40}
-                    className="transition-all duration-300 lg:w-auto"
+                    className="transition-all duration-500 lg:w-auto"
                 />
             </Link>
 
@@ -49,7 +49,7 @@ export default function Navbar() {
                         key={item.label}
                         variant="link"
                         rel="noopener noreferrer"
-                        onClick={() => window.open(item.href, '_blank')}
+                        onClick={() => window.open(item.href)}
                         className="text-base hover:no-underline hover:text-foreground"
                     >
                         {item.label}
@@ -79,7 +79,7 @@ export default function Navbar() {
                                 variant="ghost"
                                 className="justify-start w-full"
                                 onClick={() => {
-                                    window.open(item.href, '_blank');
+                                    window.open(item.href);
                                     setIsMenuOpen(false);
                                 }}
                             >

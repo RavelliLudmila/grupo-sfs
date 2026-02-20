@@ -137,7 +137,11 @@ export default function Chatbot() {
                                                                             onClick={() => {
                                                                                 if (product.actions.secondary?.text === 'Solicitar presentación') {
                                                                                     let source = 'General';
-                                                                                    if (product.title.includes('HealthCare (HIS)')) {
+                                                                                    if (
+                                                                                        product.title.includes(
+                                                                                            'HealthCare (Sistema de Información Hospitalaria)',
+                                                                                        )
+                                                                                    ) {
                                                                                         source = 'HealthCare';
                                                                                     } else if (product.title.includes('HealthTrack')) {
                                                                                         source = 'HealthTrack';

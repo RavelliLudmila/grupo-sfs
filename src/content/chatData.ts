@@ -34,7 +34,7 @@ export const getChatData = (): ChatResponse => {
                     text: 'Perfecto, estas son nuestras soluciones para instituciones de salud:',
                     products: [
                         {
-                            title: 'HealthCare (HIS)',
+                            title: 'HealthCare (Sistema de Información Hospitalaria)',
                             description:
                                 'SFS HealthCare es una solución integral para la gestión de datos clínicos y administrativos, interoperable y adaptable a cada institución. Incluye historia clínica electrónica, turnos, facturación, interoperabilidad y más, todo en una plataforma 100% web.',
                             actions: {
@@ -45,7 +45,7 @@ export const getChatData = (): ChatResponse => {
                         {
                             title: 'HealthTrack',
                             description:
-                                'SFS HealthTrack permite el seguimiento y monitoreo de la salud de los pacientes en tiempo real, utilizando inteligencia artificial para análisis predictivos y mejor toma de decisiones clínicas.',
+                                'SFS HealthTrack permite el seguimiento y monitoreo de los procesos asistenciales de los pacientes en tiempo real, utilizando inteligencia artificial para análisis predictivos y mejor toma de decisiones clínicas.',
                             actions: {
                                 primary: { text: 'Ver más', url: '/healthtrack' },
                                 secondary: { text: 'Solicitar presentación' },
@@ -80,7 +80,7 @@ export const getChatData = (): ChatResponse => {
                         {
                             title: 'SAPma',
                             description:
-                                'SAPma es una solución administrativa diseñada para financiadores de salud.Permite gestionar afiliados, facturación, nomencladores y procesos administrativos de forma integrada.',
+                                'SAPma es una solución administrativa diseñada para financiadoras de salud. Permite gestionar afiliados, facturación, nomencladores y procesos administrativos de forma integrada.',
                             actions: {
                                 primary: { text: 'Ver más', url: '/sapma' },
                                 secondary: { text: 'Solicitar presentación' },
@@ -93,7 +93,7 @@ export const getChatData = (): ChatResponse => {
                 id: 'conocer-soluciones',
                 text: 'Quiero conocer las soluciones de SFS',
                 response: {
-                    text: 'Desarrollamos un ecosistema de soluciones digitales para el sector salud que incluye:\n\n• SFS HealthCare (HIS)\n• SFS HealthTrack\n• SFS HealthCare IA\n• SAPma',
+                    text: 'Desarrollamos un ecosistema de soluciones digitales para el sector salud que incluye:\n\n• SFS HealthCare (Sistema de Información Hospitalaria)\n• SFS HealthTrack\n• SFS HealthCare IA\n• SAPma',
                     options: [
                         {
                             id: 'ver-soluciones',
